@@ -4,6 +4,7 @@
 	"compilerOptions": {
 		"alwaysStrict": true,
 		"outDir": "js",
-		"sourceMap": true
+		"sourceMap": true,
+		"removeComments": true
 	}
 }

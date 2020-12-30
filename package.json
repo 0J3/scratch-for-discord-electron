@@ -1,0 +1,20 @@
+{
+	"name": "scratchfordiscord",
+	"version": "0.1.0",
+	"main": "js/app.js",
+	"repository": "git@github.com:0J3/scratch-for-discord-electron.git",
+	"author": "0J3 <git@wafflepowered.com>",
+	"license": "AGPL-3.0-or-later",
+	"dependencies": {
+		"@types/node": "^14.14.17"
+	},
+	"devDependencies": {
+		"electron": "^11.1.1",
+		"electron-builder": "^22.9.1"
+	},
+	"scripts": {
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder --win"
+	}
+}
