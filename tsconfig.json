@@ -1,0 +1,9 @@
+{
+	"include": ["ts"],
+	"exclude": ["sfd-source"],
+	"compilerOptions": {
+		"alwaysStrict": true,
+		"outDir": "js",
+		"sourceMap": true
+	}
+}
