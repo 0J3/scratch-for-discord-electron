@@ -17,5 +17,5 @@ use `yarn run pack` then run the exe in the dist\\win-unpacked folder
 ## Requirements
 
 - Windows @ whatever shut up
-- Yarn @ ^2.0.0
 - NodeJS @ ^12.0.0
+- Yarn @ ^2.0.0
