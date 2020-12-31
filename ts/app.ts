@@ -3,6 +3,10 @@ import * as path from 'path';
 import * as fse from 'fs-extra';
 import { ChildProcess, exec } from 'child_process';
 
+if (require('electron-squirrel-startup')) {
+	process.exit(0);
+}
+
 let latestCmdWindow: ChildProcess;
 
 const createWindow = () => {

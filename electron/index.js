@@ -2,11 +2,12 @@ const checkIframeLoaded = iframe => {
 	const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
 	if (iframeDoc.readyState == 'complete') {
-		iframe.contentWindow.onload = function () {};
-		try {
-			document.getElementById('preload').remove();
-		} catch (error) {}
-		iframe.style.display = 'block';
+		iframe.contentWindow.onload = () => {
+			try {
+				document.getElementById('preload').remove();
+			} catch (error) {}
+			iframe.style.display = 'block';
+		};
 		return;
 	}
 
