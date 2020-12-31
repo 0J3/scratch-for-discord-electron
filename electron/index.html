@@ -24,6 +24,7 @@
 			body {
 				background: #2a2b2c;
 				color: #ffffff;
+				text-align: center;
 			}
 			body,
 			iframe {
@@ -41,6 +42,10 @@
 			iframe.backup {
 				z-index: 499;
 			}
+			#ifTooLong {
+				opacity: 0;
+				transition: opacity 1s;
+			}
 		</style>
 	</head>
 	<body>
@@ -53,6 +58,10 @@
 				<div class="indeterminate"></div>
 			</div>
 		</div>
+		<small id="ifTooLong"
+			>Loading is taking longer than usual. You might want to attempt pressing
+			CTRL+R in this window.</small
+		>
 
 		<!-- Main iframe -->
 		<iframe

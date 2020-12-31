@@ -25,3 +25,7 @@ checkIframeLoaded(document.getElementById('iframe3'));
 document.getElementsByTagName(`title`)[0].innerHTML = `Scratch For Discord v${
 	require(`${__filename}\\..\\..\\package.json`).version
 }`;
+
+setTimeout(() => {
+	document.getElementById('ifTooLong').style.opacity = '1';
+}, 20000);

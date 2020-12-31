@@ -1,5 +1,6 @@
 {
 	"name": "scratchfordiscord",
+	"description": "Scratch For Discord but using electron",
 	"version": "1.0.1",
 	"main": "js/app.js",
 	"repository": "git@github.com:0J3/scratch-for-discord-electron.git",
