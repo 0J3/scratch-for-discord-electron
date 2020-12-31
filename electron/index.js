@@ -6,6 +6,7 @@ const checkIframeLoaded = iframe => {
 		try {
 			document.getElementById('preload').remove();
 		} catch (error) {}
+		iframe.style.display = 'block';
 		return;
 	}
 
