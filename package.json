@@ -39,12 +39,6 @@
 					]
 				},
 				{
-					"target": "squirrel",
-					"arch": [
-						"x64"
-					]
-				},
-				{
 					"target": "dir",
 					"arch": [
 						"x64"
@@ -67,10 +61,6 @@
 			"uninstallerIcon": "icons/ico.ico",
 			"license": "license.html",
 			"menuCategory": true
-		},
-		"squirrelWindows": {
-			"iconUrl": "https://raw.githubusercontent.com/0J3/scratch-for-discord-electron/main/icons/ico.ico",
-			"remoteReleases": true
 		},
 		"asar": false
 	}
