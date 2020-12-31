@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Scratch For Discord v.UNKNOWN</title>
+		<!-- Mat Compiled and minified CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+
+		<!-- Mat Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+		<!-- Google Icon Font-->
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+
+		<!-- Extra CSS -->
+		<style>
+			body,
+			iframe {
+				width: 100vw;
+				height: 100vh;
+				position: fixed;
+				left: 0;
+				top: 0;
+				display: block;
+				background: #2a2b2c;
+				color: #ffffff;
+			}
+			iframe.main {
+				z-index: 100;
+			}
+			iframe.backup {
+				z-index: 50;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="preload">
+			<div class="valign-wrapper">
+				<h1>Waiting for server...</h1>
+				<br />
+			</div>
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		</div>
+
+		<!-- Main iframe -->
+		<iframe
+			src="http://localhost:3000/"
+			frameborder="0"
+			id="iframe"
+			class="main"
+		></iframe>
+
+		<!-- For incase other scratches exist -->
+		<iframe
+			src="http://localhost:3001/"
+			frameborder="0"
+			id="iframe2"
+			class="backup"
+		></iframe>
+		<iframe
+			src="http://localhost:3002/"
+			frameborder="0"
+			id="iframe3"
+			class="backup"
+		></iframe>
+
+		<!-- Index.JS -->
+		<script src="./index.js"></script>
+	</body>
+</html>

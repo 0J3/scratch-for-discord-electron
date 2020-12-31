@@ -1,11 +1,17 @@
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
+import * as fse from 'fs-extra';
+import { ChildProcess, exec } from 'child_process';
 
-function createWindow() {
+let latestCmdWindow: ChildProcess;
+
+const createWindow = () => {
 	const mainWindow = new BrowserWindow({
 		height: 600,
 		webPreferences: {
-			preload: path.join(__dirname, 'preload.js'),
+			nodeIntegration: true,
+			nodeIntegrationInSubFrames: false,
+			nodeIntegrationInWorker: false,
 		},
 		width: 800,
 	});
@@ -20,15 +26,46 @@ function createWindow() {
 
 	mainWindow.setMenuBarVisibility(false);
 
+	mainWindow.setEnabled(false);
+	mainWindow.hide();
+
 	setTimeout(() => {
-		shell.openExternal(`${__filename}\\..\\..\\run.bat`);
+		let baseDir = `${__filename}\\..\\..`;
+		baseDir = path.resolve(baseDir);
+
+		let targetDir = `${
+			process.env.APPDATA ||
+			(process.platform == 'darwin'
+				? process.env.HOME + 'Library/Preferences'
+				: '/var/local')
+		}/ScratchForDiscord-Files`;
+
+		try {
+			fse.mkdirSync(targetDir);
+		} catch (error) {}
+
+		fse.copySync(baseDir, targetDir);
+
+		latestCmdWindow = exec(`start cmd.exe /k ${targetDir}\\init.bat`, () => {
+			// latestCmdWindow = exec(`start cmd.exe /k ${baseDir}\\init2.bat`, () => {
+			let sfdInstall = `${targetDir}\\sfd-source\\dist`;
+			let sfdMain = `${sfdInstall}\\discord.min.js`;
+
+			sfdInstall = path.resolve(sfdInstall);
+			sfdMain = path.resolve(sfdMain);
+
+			mainWindow.setEnabled(true);
+			mainWindow.show();
+
+			latestCmdWindow = exec(`start cmd.exe /k ${targetDir}\\start.bat`, () => {
+				mainWindow.close();
+			});
+			// });
+		});
 	}, 1);
 
-	// mainWindow.setEnabled(false);
-	// mainWindow.hide();
-
 	// mainWindow.webContents.openDevTools();
-}
+};
 
 app.on('ready', () => {
 	createWindow();
@@ -40,6 +77,15 @@ app.on('ready', () => {
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
-		app.quit();
+		try {
+			// fse.emptyDirSync(tmpPath);
+			// fse.rmdirSync(tmpPath);
+		} finally {
+			try {
+				latestCmdWindow.kill('SIGINT');
+			} finally {
+				app.quit();
+			}
+		}
 	}
 });

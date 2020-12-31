@@ -6,7 +6,8 @@
 	"author": "0J3 <git@wafflepowered.com>",
 	"license": "AGPL-3.0-or-later",
 	"dependencies": {
-		"@types/node": "^14.14.17"
+		"@types/node": "^14.14.17",
+		"fs-extra": "^9.0.1"
 	},
 	"devDependencies": {
 		"electron": "^11.1.1",
@@ -16,5 +17,23 @@
 		"start": "electron .",
 		"pack": "electron-builder --dir",
 		"dist": "electron-builder --win"
+	},
+	"build": {
+		"appId": "xyz.0j3.ScratchForDiscord",
+		"productName": "Scratch for Discord",
+		"copyright": "Copyright © 2020 0J3.",
+		"win": {
+			"icon": "icons/ico.ico"
+		},
+		"nsis": {
+			"oneClick": false,
+			"perMachine": true,
+			"allowToChangeInstallationDirectory": true,
+			"installerIcon": "icons/ico.ico",
+			"uninstallerIcon": "icons/ico.ico",
+			"license": "license.html",
+			"menuCategory": true
+		},
+		"asar": false
 	}
 }
